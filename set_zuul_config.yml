@@ -31,7 +31,7 @@ zuul:
       serviceId: SOCIAL-CHAT
     
     social-chat-by-url:
-      path: /social-chat/**
+      path: /social-chat-by-url/**
       url: http://localhost:8889
     
     social-expl:
