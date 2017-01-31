@@ -1,0 +1,42 @@
+configuration:  
+  projectName: set_zuul_config
+
+server:
+  port: 9090
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+#  Uncomment to disable auto-registering all services read from Eureka
+#  ignoredServices: '*'
+  routes:
+    test:
+      path: /redirect/**
+      url: https://git.digitalharbor.us
+    customer-by-address:
+      path: /customer-by-address/**
+      url: http://localhost:9098
+    customer-by-service:
+      path: /customer-by-service/**
+      serviceId: CUSTOMER-SERVICE
+    
+    social-chat:
+      path: /social-chat/**
+      serviceId: SOCIAL-CHAT
+    
+    social-expl:
+      path: /social-expl/**
+      serviceId: SOCIAL-EXPLANATIONS
+    
+    static:
+      path: /static/**
+
+spring:
+  application:
+    name: zuul-server
